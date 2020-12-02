@@ -54,12 +54,15 @@ public class Categories extends AppCompatActivity {
         setupBottomNavigationView();
 
         searchView = findViewById(R.id.searchView);
-        Query newQuery = database.getReference("Posts");
+        Query newQuery = database.getReference("Uploaded_Posts");
+        System.out.println(newQuery);
         newQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println(dataSnapshot.getChildren());
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    tags.add((String) dataSnapshot1.child("Tag").getValue());
+                    //System.out.println(dataSnapshot1);
+                    tags.add((String) dataSnapshot1.child("hashtag").getValue());
                     System.out.println(tags);
                     Set<String> set = new LinkedHashSet<String>();
                     set.addAll(tags);

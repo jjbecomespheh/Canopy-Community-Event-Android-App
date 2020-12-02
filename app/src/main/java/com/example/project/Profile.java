@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
            System.out.println("hi");
                });
 
-        SavedPost.setOnClickListener((v) -> {
+       SavedPost.setOnClickListener((v) -> {
                 //show saved post
             System.out.println("hi");
         });
