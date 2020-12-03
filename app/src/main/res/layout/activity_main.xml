@@ -7,14 +7,19 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <!-- Top Toolbar -->
         <RelativeLayout
+            android:id="@+id/relLayout1"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/relLayout1">
+            android:layout_height="50dp">
+
+
+
 
             <include layout="@layout/layout_top_tabs" />
 
@@ -26,9 +31,14 @@
 
             </androidx.appcompat.widget.AppCompatImageView>
 
+
+
+
         </RelativeLayout>
 
         <!-- Mid -->
+
+        <!-- Bottom -->
         <RelativeLayout
             android:id="@+id/RLayout2"
             android:layout_width="match_parent"
@@ -39,30 +49,59 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/MiddleScroll"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                
+                android:layout_height="587dp">
 
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/create_post_fab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/gray"
+                    android:src="@drawable/ic_create_post"
+                    app:rippleColor="@color/white">
+
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
             </androidx.core.widget.NestedScrollView>
 
             <include layout="@layout/layout_middle_homeview" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/create_post_fab"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom|end"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/gray"
-                android:src="@drawable/ic_create_post"
-                app:rippleColor="@color/white">
+                android:text="Welcome, here are some upcoming events you may be interested in!"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal">
 
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mypostslist"
+                android:layout_width="368dp"
+                android:layout_height="584dp"
+                android:layout_alignBottom="@+id/MiddleScroll"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="100dp"
+
+
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="27dp"
+                android:foregroundGravity="center"
+                tools:ignore="MissingConstraints">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
         </RelativeLayout>
 
-        <!-- Bottom -->
         <include layout="@layout/layout_bottom_navigation_view" />
 
     </RelativeLayout>

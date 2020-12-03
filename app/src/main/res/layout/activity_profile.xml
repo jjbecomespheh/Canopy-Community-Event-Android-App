@@ -9,7 +9,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="661dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:backgroundTint="#FFFFFF"
+            android:layout_marginTop="1dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/ic_settingsicon"/>
 
         <ImageView
             android:id="@+id/topbar"
@@ -20,103 +30,50 @@
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
-            android:layout_alignTop="@+id/topbar"
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/topbar"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/myposts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".50"
                 android:text="My Posts"
                 app:backgroundTint="#000000"
-                android:id="@+id/myposts"
                 tools:ignore="MissingConstraints" />
 
             <Button
+                android:id="@+id/savedposts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".560"
                 android:text="Saved Posts"
                 app:backgroundTint="#000000"
-                android:id="@+id/savedposts"
-                tools:ignore="MissingConstraints"/>
+                tools:ignore="MissingConstraints" />
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="357dp"
-            android:layout_height="495dp"
-            android:layout_alignParentTop="true"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypostslist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="60dp"
+
+
+            android:foregroundGravity="center"
             tools:ignore="MissingConstraints">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:ignore="MissingConstraints">
 
-                <ImageButton
-                    android:id="@+id/fifthrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/fifthrow" />
-
-                <ImageButton
-                    android:id="@+id/hackathon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/hackathon" />
-
-                <ImageButton
-                    android:id="@+id/exhibition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/exhibition" />
-
-                <ImageButton
-                    android:id="@+id/intern"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/intern" />
-
-                <ImageButton
-                    android:id="@+id/scholarships"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/scholarships" />
-            </LinearLayout>
-        </ScrollView>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <include layout="@layout/layout_bottom_navigation_view" />
-
 
 
     </RelativeLayout>

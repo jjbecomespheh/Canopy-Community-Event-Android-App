@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class PostLayout extends AppCompatActivity {
     TextView description;
     ImageView postimage;
     Button signuplink;
+    Button subscribe;
     Bitmap a = null;
     private StorageReference mStorageRef;
     @Override
@@ -42,33 +44,21 @@ public class PostLayout extends AppCompatActivity {
         Bundle info = intent.getExtras();
         title.setText(info.getString("til"));
         description.setText(info.getString("desc"));
-        //postimage.setImageBitmap(BitmapEncoder.decodeImage(info.getStringArray("Data"));
+        postimage.setImageBitmap(BitmapEncoder.decodeImage(info.getString("pic")));
         signuplink.setOnClickListener((v) -> {
-           Uri link = Uri.parse(info.getString("lnk"));
-           Intent intent2 = new Intent(Intent.ACTION_VIEW, link);
+           Intent intent2 = new Intent(Intent.ACTION_VIEW);
+           intent2.setData(Uri.parse("https://"+info.getString("lnk")));
            startActivity(intent2);
+        });
+        subscribe = findViewById(R.id.subscribe);
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Subscribe s = new Subscribe();
+                s.subscribeTo(info.getString("hash"));
+            }
         });
 
     }
 
-//    public void downloadViaUrl() {
-//        StorageReference strref = mStorageRef.child("images/Smiley.png");
-//
-//        strref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                try {
-//                    URL url = new URL(uri.toString());
-//                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                    connection.setDoInput(true);
-//                    connection.connect();
-//                    InputStream input = connection.getInputStream();
-//                    Bitmap myBitmap = BitmapFactory.decodeStream(input);
-//                    a = myBitmap;
-//                } catch (IOException e) {
-//                    // Log exception
-//                }
-//            }
-//        });
-//    }
 }

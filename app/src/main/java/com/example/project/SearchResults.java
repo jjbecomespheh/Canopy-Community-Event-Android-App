@@ -81,7 +81,7 @@ public class SearchResults extends AppCompatActivity {
         newbtn.setOnClickListener((v) -> {
             Intent intent = new Intent(SearchResults.this, PostLayout.class);
             intent.putExtra("desc", datasnapshot.child("description").getValue().toString());
-            //intent.putExtra("pic", datasnapshot.child("encoded_photo").getValue().toString());
+            intent.putExtra("pic", datasnapshot.child("encoded_photo").getValue().toString());
             intent.putExtra("hash", datasnapshot.child("hashtag").getValue().toString());
             intent.putExtra("lnk", datasnapshot.child("link").getValue().toString());
             intent.putExtra("til", datasnapshot.child("title").getValue().toString());

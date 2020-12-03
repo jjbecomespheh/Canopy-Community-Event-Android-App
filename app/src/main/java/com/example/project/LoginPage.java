@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import static com.example.project.R.layout.activity_login;
 
 public class LoginPage extends AppCompatActivity{
+    MainApplication mApplication;
+
     EditText mEmail, mPassword;
     Button Btn_login;
     FirebaseAuth fAuth;
@@ -44,6 +46,7 @@ public class LoginPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(activity_login);
 
+        mApplication = (MainApplication) getApplicationContext();
         mEmail = findViewById(R.id.input_email);
         mPassword = findViewById(R.id.input_password);
         Btn_login = findViewById(R.id.btn_login);
@@ -60,7 +63,7 @@ public class LoginPage extends AppCompatActivity{
                     startActivity(new Intent(LoginPage.this,MainActivity.class));
                     finish();
                 }
-                UploadPost.setUser_email(Email);
+
                 mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -68,7 +71,7 @@ public class LoginPage extends AppCompatActivity{
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //LoginPage.setUser_email(Email);
+                            mApplication.email = mEmail.getText().toString();
 
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             finish();
