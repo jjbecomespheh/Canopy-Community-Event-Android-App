@@ -7,86 +7,97 @@
     tools:context=".Categories"
     android:orientation="vertical">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+    <RelativeLayout
+        android:id="@+id/relativelayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/searchbar"
-        android:queryHint="Search Here"
-        android:iconifiedByDefault="false"
-        android:clickable="true"
-        android:inputType="text"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent">
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/searchbar"
+            android:queryHint="Search Here"
+            android:iconifiedByDefault="false"
+            android:clickable="true"
+            android:inputType="text"
+            tools:ignore="MissingConstraints" />
 
-    <ScrollView
-        android:layout_alignTop="@id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
+        <ScrollView
+            android:layout_alignTop="@id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             tools:ignore="MissingConstraints">
 
-            <ImageButton
-                android:id="@+id/fifthrow"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:background="@drawable/fifthrow" />
-            <ImageButton
-                android:id="@+id/hackathon"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_weight="1"
-                android:background="@drawable/hackathon" />
-            <ImageButton
-                android:id="@+id/exhibition"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_weight="1"
-                android:background="@drawable/exhibition" />
-            <ImageButton
-                android:id="@+id/intern"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_weight="1"
-                android:background="@drawable/intern" />
-            <ImageButton
-                android:id="@+id/scholarships"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_weight="1"
-                android:background="@drawable/scholarships" />
-        </LinearLayout>
-    </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
 
-    <include layout="@layout/layout_bottom_navigation_view" />
+                <ImageButton
+                    android:id="@+id/fifthrow"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/fifthrow" />
+                <ImageButton
+                    android:id="@+id/hackathon"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/hackathon" />
+                <ImageButton
+                    android:id="@+id/exhibition"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/exhibition" />
+                <ImageButton
+                    android:id="@+id/intern"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/intern" />
+                <ImageButton
+                    android:id="@+id/scholarships"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/scholarships" />
+            </LinearLayout>
+        </ScrollView>
 
+
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottomNavViewBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="745dp"
+            android:background="@drawable/white_gray_border_top"
+            app:menu="@menu/bottom_navigation_menu"
+            tools:ignore="NotSibling">
+
+
+        </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

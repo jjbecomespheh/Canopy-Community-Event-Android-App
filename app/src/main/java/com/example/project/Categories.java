@@ -54,12 +54,15 @@ public class Categories extends AppCompatActivity {
         setupBottomNavigationView();
 
         searchView = findViewById(R.id.searchView);
-        Query newQuery = database.getReference("Posts");
+        Query newQuery = database.getReference("Uploaded_Posts");
+        System.out.println(newQuery);
         newQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println(dataSnapshot.getChildren());
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    tags.add((String) dataSnapshot1.child("Tag").getValue());
+                    //System.out.println(dataSnapshot1);
+                    tags.add((String) dataSnapshot1.child("hashtag").getValue());
                     System.out.println(tags);
                     Set<String> set = new LinkedHashSet<String>();
                     set.addAll(tags);
@@ -96,9 +99,9 @@ public class Categories extends AppCompatActivity {
         });
 
         fifthrow.setOnClickListener((v) -> {
-            if(tags.contains("fifth row recruitment")){
+            if(tags.contains("#fifthrowrecruitment")){
                 Intent intent = new Intent(Categories.this, SearchResults.class);
-                intent.putExtra("Search", "fifth row recruitment");
+                intent.putExtra("Search", "#fifthrowrecruitment");
                 startActivity(intent);
             }else{
                 Toast.makeText(Categories.this, "No Posts Available",Toast.LENGTH_LONG).show();
@@ -106,9 +109,9 @@ public class Categories extends AppCompatActivity {
         });
 
         hackathon.setOnClickListener((v) -> {
-            if(tags.contains("hackathon")){
+            if(tags.contains("#hackathon")){
                 Intent intent = new Intent(Categories.this, SearchResults.class);
-                intent.putExtra("Search", "hackathon");
+                intent.putExtra("Search", "#hackathon");
                 startActivity(intent);
             }else{
                 Toast.makeText(Categories.this, "No Posts Available",Toast.LENGTH_LONG).show();
@@ -116,9 +119,9 @@ public class Categories extends AppCompatActivity {
         });
 
         exhibition.setOnClickListener((v) -> {
-            if(tags.contains("exhibition")){
+            if(tags.contains("#exhibition")){
                 Intent intent = new Intent(Categories.this, SearchResults.class);
-                intent.putExtra("Search", "exhibition");
+                intent.putExtra("Search", "#exhibition");
                 startActivity(intent);
             }else{
                 Toast.makeText(Categories.this, "No Posts Available",Toast.LENGTH_LONG).show();
@@ -126,9 +129,9 @@ public class Categories extends AppCompatActivity {
         });
 
         intern.setOnClickListener((v) -> {
-            if(tags.contains("career")){
+            if(tags.contains("#career")){
                 Intent intent = new Intent(Categories.this, SearchResults.class);
-                intent.putExtra("Search", "career");
+                intent.putExtra("Search", "#career");
                 startActivity(intent);
             }else{
                 Toast.makeText(Categories.this, "No Posts Available",Toast.LENGTH_LONG).show();
@@ -136,9 +139,9 @@ public class Categories extends AppCompatActivity {
         });
 
         scholarships.setOnClickListener((v) -> {
-            if(tags.contains("scholarships")){
+            if(tags.contains("#scholarships")){
                 Intent intent = new Intent(Categories.this, SearchResults.class);
-                intent.putExtra("Search", "scholarships");
+                intent.putExtra("Search", "#scholarships");
                 startActivity(intent);
             }else{
                 Toast.makeText(Categories.this, "No Posts Available",Toast.LENGTH_LONG).show();

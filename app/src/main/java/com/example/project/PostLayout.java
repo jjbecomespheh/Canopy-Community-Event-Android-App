@@ -7,10 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.project.Utils.BitmapEncoder;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -22,50 +24,41 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PostLayout extends AppCompatActivity {
-    TextView title = findViewById(R.id.title);
-    TextView description = findViewById(R.id.description);
-    ImageView postimage = findViewById(R.id.postimage);
-    Button signuplink = findViewById(R.id.signuplink);
+    TextView title;
+    TextView description;
+    ImageView postimage;
+    Button signuplink;
+    Button subscribe;
     Bitmap a = null;
     private StorageReference mStorageRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_layout);
+        setContentView(R.layout.my_posts_layout);
+        title = findViewById(R.id.Post_title);
+        description = findViewById(R.id.Post_description);
+        postimage = findViewById(R.id.post_image);
+        signuplink = findViewById(R.id.Post_signup_link);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         Intent intent = getIntent();
         Bundle info = intent.getExtras();
-        DataSnapshot data = info.getParcelable("Data");
-        downloadViaUrl();
-        title.setText(data.child("Name").getValue().toString());
-        description.setText(data.child("Content").getValue().toString());
-        postimage.setImageBitmap(a);
+        title.setText(info.getString("til"));
+        description.setText(info.getString("desc"));
+        postimage.setImageBitmap(BitmapEncoder.decodeImage(info.getString("pic")));
         signuplink.setOnClickListener((v) -> {
-           Uri link = Uri.parse(data.child("Link").getValue().toString());
-           Intent intent2 = new Intent(Intent.ACTION_VIEW, link);
+           Intent intent2 = new Intent(Intent.ACTION_VIEW);
+           intent2.setData(Uri.parse("https://"+info.getString("lnk")));
            startActivity(intent2);
         });
-
-    }
-
-    public void downloadViaUrl() {
-        StorageReference strref = mStorageRef.child("images/Smiley.png");
-
-        strref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        subscribe = findViewById(R.id.subscribe);
+        subscribe.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(Uri uri) {
-                try {
-                    URL url = new URL(uri.toString());
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    Bitmap myBitmap = BitmapFactory.decodeStream(input);
-                    a = myBitmap;
-                } catch (IOException e) {
-                    // Log exception
-                }
+            public void onClick(View v) {
+                Subscribe s = new Subscribe();
+                s.subscribeTo(info.getString("hash"));
             }
         });
+
     }
+
 }
