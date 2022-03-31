@@ -1,6 +1,7 @@
 # Community Events Android Application
 
 Developed using Java in Android Studio and Google Firebase
+
 https://istd.sutd.edu.sg/term4-design-exhibition/infosys/Canopy/
 
 ## Description
